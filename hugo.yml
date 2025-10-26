@@ -45,6 +45,22 @@ params:
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
 
+  comments: true  # 启用评论
+  
+  giscus:
+    repo: "qwagrox/qwagrox.github.io"
+    repoID: "R_kgDOQJdIZw"  # 从 giscus.app 获取
+    category: "Announcements"
+    categoryID: "DIC_kwDOQJdIZ84CxGCX"  # 从 giscus.app 获取
+    mapping: "pathname"
+    strict: "0"
+    reactionsEnabled: "1"
+    emitMetadata: "0"
+    inputPosition: "bottom"
+    theme: "preferred_color_scheme"
+    lang: "en"
+    loading: "lazy"
+
   # 模仿 lilianweng.github.io 的首页欢迎语
   homeInfoParams:
     Title: "👋 Autonomous Agricultural Robots"
