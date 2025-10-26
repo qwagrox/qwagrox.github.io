@@ -3,7 +3,7 @@ name: Deploy Hugo site to Pages
 on:
   push:
     branches:
-      - main  # 触发部署的分支
+      - main
   workflow_dispatch:
 
 permissions:
@@ -15,30 +15,32 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-dependencies:
-  "build":
-    needs: ["checkout"]
-    uses: actions/setup-hugo@v4
+defaults:
+  run:
+    shell: bash
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Install Hugo CLI
-        uses: actions/setup-hugo@v4
-        with:
-          hugo-version: '0.112.4'
-          extended: true
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.128.0/hugo_extended_0.128.0_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      
       - name: Install Dart Sass
         run: sudo snap install dart-sass
+      
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+      
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
@@ -48,6 +50,7 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
