@@ -98,3 +98,23 @@ body .post-entry .entry-footer {
     font-size: 12px !important;
     color: var(--secondary) !important;
 }
+
+/* 导入 Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap' );
+
+/* 全局字体 - 使用 Inter（现代、清晰） */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* 文章正文 - 使用 Merriweather（优雅、易读） */
+.post-content, article.post-entry .entry-content {
+    font-family: 'Merriweather', Georgia, serif !important;
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+}
+
+/* 标题保持无衬线字体 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif !important;
+}
