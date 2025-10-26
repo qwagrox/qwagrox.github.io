@@ -64,7 +64,18 @@ params:
   # 模仿 lilianweng.github.io 的首页欢迎语
   homeInfoParams:
     Title: "👋 Autonomous Agricultural Robots"
-    Content: "Hi, this is Tang Yong. I'm documenting my learning notes on intelligent agricultural machinery here since 2025. Feel free to explore my thoughts and research on autonomous systems, robotics, and AI applications in agriculture."
+    Content: |
+      Hi, I'm **Tang Yong**, Phd candidate at Jiangsu University，China, focusing on intelligent agricultural machinery and autonomous systems.
+      
+      I'm documenting my learning notes and research here since 2025, covering topics like:
+
+      - 🚜 Autonomous agricultural robots
+
+      - 🤖 Computer vision and deep learning
+      
+      - 🎯 off road autonomous driving
+      
+      Feel free to explore my thoughts and connect with me ([tangyong@stmail.ujs.edu.cn](mailto:tangyong@stmail.ujs.edu.cn))!
 
   # 社交媒体图标
   socialIcons:
