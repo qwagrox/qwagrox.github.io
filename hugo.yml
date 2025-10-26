@@ -1,0 +1,103 @@
+baseURL: "https://qwagrox.github.io/"
+languageCode: "en-us"
+title: "Tang Yong"
+theme: "PaperMod"
+pagination:
+  pagerSize: 5
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+# 确保加载自定义资源
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: "Intelligence of agricultural robots"
+  description: "Research on autonomous intelligence of agricultural robots and automatic driving of agricultural machinery"
+  keywords: [Blog, Portfolio, autonomous intelligence, agricultural robots, automatic driving]
+  author: "Tang Yong"
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: "auto" # dark, light
+  disableThemeToggle: false
+
+  # 重要：启用自定义 CSS
+  assets:
+    disableFingerprinting: false
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+
+  # 模仿 lilianweng.github.io 的首页欢迎语
+  homeInfoParams:
+    Title: "👋 Autonomous Agricultural Robots"
+    Content: "Hi, this is Tang Yong. I'm documenting my learning notes on intelligent agricultural machinery here since 2025. Feel free to explore my thoughts and research on autonomous systems, robotics, and AI applications in agriculture."
+
+  # 社交媒体图标
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/qwagrox"
+    - name: "twitter"
+      url: "https://twitter.com/your-twitter-username"
+    - name: "instagram"
+      url: "https://instagram.com/your-instagram-username"
+    - name: "rss"
+      url: "index.xml"
+
+  # 顶部主菜单
+menu:
+    main:
+      - identifier: posts
+        name: Posts
+        url: /posts/
+        weight: 10
+      - identifier: archive
+        name: Archive
+        url: /archives/
+        weight: 20
+      - identifier: search
+        name: Search
+        url: /search/
+        weight: 30
+      - identifier: tags
+        name: Tags
+        url: /tags/
+        weight: 40
+      - identifier: faq
+        name: FAQ
+        url: /faq/
+        weight: 50
+
+# 开启全文搜索
+fuseOpts:
+  isCaseSensitive: false
+  shouldSort: true
+  location: 0
+  distance: 1000
+  threshold: 0.4
+  minMatchCharLength: 0
+  limit: 10
+  keys: ["title", "permalink", "summary", "content"]
+
+# 代码高亮设置
+pygmentsUseClasses: true
+markup:
+  highlight:
+    noClasses: false

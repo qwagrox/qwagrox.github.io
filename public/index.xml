@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tang Yong</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Tang Yong</description>
+    <image>
+      <title>Tang Yong</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Oct 2025 22:10:26 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deep Reflection on &#34;End-to-End&#34; vs &#34;Modular&#34; in Autonomous Driving</title>
+      <link>http://localhost:1313/posts/in-depth-thinking-autonomous-driving-i/</link>
+      <pubDate>Sun, 26 Oct 2025 22:10:26 +0800</pubDate>
+      <guid>http://localhost:1313/posts/in-depth-thinking-autonomous-driving-i/</guid>
+      <description>&lt;h2 id=&#34;introduction-a-debate-about-the-soul-of-autonomous-driving&#34;&gt;Introduction: A Debate About the Soul of Autonomous Driving&lt;/h2&gt;
+&lt;p&gt;Recently, Tesla&amp;rsquo;s AI lead Ashok Elluswamy explained why &amp;ldquo;End-to-End&amp;rdquo; autonomous driving is necessary:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Why end-to-end?&lt;/p&gt;
+&lt;p&gt;Even though Tesla strongly believes in end-to-end neural networks, it is by no means the consensus approach to self-driving. Most other&lt;/p&gt;
+&lt;p&gt;entities developing self-driving have a sensor-heavy, modular approach to driving. While such systems may be easier to develop and debug in&lt;/p&gt;
+&lt;p&gt;the beginning, there are several complexities with such a system. The end-to-end approach offers several benefits over that baseline. To&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
