@@ -45,9 +45,9 @@ While impressed by the power of Tesla's FSD, I have my own different perspective
 
 I will attempt to articulate my viewpoint using my limited knowledge and thinking, conducting a deep reflection on the end-to-end and modular technical approaches from multiple dimensions including cognitive science, machine learning theory, and engineering practice.
 
-## Part Two: The Gap Between Human Experience and Machine Training: Perspectives on Cognition and Causality
+## The Gap Between Human Experience and Machine Training: Perspectives on Cognition and Causality
 
-### 2.1 The Dual-Process Model of Human Driving Decisions: Intuition Is Not Simply "End-to-End"
+### The Dual-Process Model of Human Driving Decisions: Intuition Is Not Simply "End-to-End"
 
 Human decision-making processes are not a single computational mode. Nobel laureate in Economics Daniel Kahneman's **Dual Process Theory** provides us with a powerful explanatory framework. This theory posits that human thinking comprises two distinctly different systems [1]:
 
@@ -61,7 +61,7 @@ The fact that human driving often appears to be "making decisions instantly afte
 
 Human "intuitive" decisions are actually the result of System 1 and System 2 working collaboratively based on long-term experience. They are built upon a deep understanding of **abstract, causal models** of the world, rather than purely statistical correlations in data. Academician Zheng Nanning of the Chinese Academy of Engineering has also pointed out that human intuitive responses seek global optimal solutions, with **cost functions** and **memory-based decision structures** behind them [2].
 
-### 2.2 "Causal Confusion" in End-to-End Models: Correlation Does Not Equal Causation
+### "Causal Confusion" in End-to-End Models: Correlation Does Not Equal Causation
 
 In stark contrast to the complex cognitive architecture of humans, current end-to-end autonomous driving models, especially those based on Imitation Learning, fundamentally learn **statistical correlations** between input data (sensor signals) and output data (expert driving behavior). This leads to a fatal flaw: **"Causal Confusion"** [3, 4].
 
@@ -82,11 +82,11 @@ The following table clearly contrasts the essential differences between human de
 Therefore, the end-to-end approach is essentially about constructing a continuous function in hopes of better gradient optimization. It is a powerful mathematical tool, but on the path toward general artificial intelligence, it sidesteps the core challenge of constructing causal models of the world. As research points out, even end-to-end methods need to "identify policy-relevant context and discard irrelevant details" [5], which itself suggests that the purely end-to-end paradigm may need to evolve toward a more structured direction.
 
 
-## Part Three: Engineering Trade-offs: The Dilemma Between Scalability and Verifiability
+## Engineering Trade-offs: The Dilemma Between Scalability and Verifiability
 
 In Ashok Elluswamy's arguments, two points are extremely persuasive and reflect engineering reality: **(1) Easy to scale to handle long-tail problems; (2) Homogeneous compute with deterministic latency.** These are indeed the core engineering advantages of the end-to-end approach. However, behind these advantages lies the sacrifice of the system's **interpretability, verifiability, and debuggability**, which are precisely the cornerstones of Safety-Critical Systems.
 
-### 3.1 Advantages of the Modular Approach: Transparent, Controllable, Verifiable
+### Advantages of the Modular Approach: Transparent, Controllable, Verifiable
 
 The traditional modular approach decomposes the autonomous driving task into independent modules such as perception, prediction, planning, and control. The advantages of this architecture include:
 
@@ -96,7 +96,7 @@ The traditional modular approach decomposes the autonomous driving task into ind
 
 However, its drawbacks, as Ashok pointed out, include difficult interface definition between modules and the tendency for "error accumulation" effects—small errors in upstream modules may be amplified in downstream modules, leading to final decision failures. Optimizing the entire system also becomes very difficult.
 
-### 3.2 The "Devil's Bargain" of the End-to-End Approach: Trading Verifiability for Scalability
+### The "Devil's Bargain" of the End-to-End Approach: Trading Verifiability for Scalability
 
 The end-to-end approach "fuses" all modules together through a massive neural network, achieving direct mapping from sensors to control. This brings significant engineering advantages:
 
@@ -118,7 +118,7 @@ Research clearly indicates that both modular and end-to-end methods face common 
 
 Therefore, Ashok's statement that the end-to-end approach is "on the correct side of scaling" only tells half the story (in my personal opinion). It may have advantages in addressing the "breadth" of long-tail distributions, but in ensuring the "depth" (i.e., reliability, verifiability) of safety-critical systems, it brings enormous, possibly insurmountable challenges.
 
-## Part Four: Conclusion: Beyond the Route Debate, Returning to the Essence of Intelligence
+## Conclusion: Beyond the Route Debate, Returning to the Essence of Intelligence
 
 Through the above analysis, we can roughly conclude: there is a huge gap between the current mainstream deep learning paradigm and achieving truly general artificial intelligence. Equating the complex decision-making process of humans based on experience, causality, and abstract models with a data-fitting engine designed to optimize continuous functions is an oversimplified and misleading analogy.
 
