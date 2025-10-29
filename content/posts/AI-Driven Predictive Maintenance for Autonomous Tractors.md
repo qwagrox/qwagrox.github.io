@@ -132,7 +132,7 @@ Previous work on agricultural equipment monitoring includes:
 
 Our system follows a seven-layer architecture designed for scalability, reliability, and maintainability:
 
-![seven-layer architecture](PdM.PNG)
+![seven-layer architecture](https://github.com/qwagrox/qwagrox.github.io/blob/main/content/posts/PdM.png)
 
 ### 3.2 Layer 1: Data Acquisition
 
