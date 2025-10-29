@@ -1,6 +1,7 @@
 +++
 date = '2025-10-29T23:00:30+08:00'
 title = 'AI-Driven Predictive Maintenance for Autonomous Tractors: From Reactive Repairs to Proactive Prevention'
+math: true
 +++
 
 **A Deep Dive into Large-Scale Deployment of TimeGPT-Powered Predictive Maintenance Systems**
@@ -356,7 +357,7 @@ where:
 
 The model outputs:
 1. **Point forecast**: $\\hat{y}_{T+h} = \\mathbb{E}[y_{T+h} | \\mathbf{y}_{1:T}]$
-2. **Prediction intervals**: $[\\hat{y}_{T+h}^{(\\alpha)}, \\hat{y}_{T+h}^{(1-\\alpha)}]$ for confidence level $\\alpha$
+2. **Prediction intervals**: $[\hat{y}_{T+h}^{(\alpha)}, \hat{y}_{T+h}^{(1-\alpha)}]$ for confidence level $\alpha$
 
 **Advantages over traditional methods**:
 1. **Zero-shot learning**: No need to train on tractor-specific data
