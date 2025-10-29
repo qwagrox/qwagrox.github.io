@@ -132,39 +132,7 @@ Previous work on agricultural equipment monitoring includes:
 
 Our system follows a seven-layer architecture designed for scalability, reliability, and maintainability:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ Layer 1: Data Acquisition                                   │
-│ T-BOX (Telematics Box) → MQTT Broker → Data Bridge          │
-└─────────────────────────┬───────────────────────────────────┘
-                          │
-┌─────────────────────────┴───────────────────────────────────┐
-│ Layer 2: Time Series Database                               │
-│ VictoriaMetrics Cluster (vminsert + vmselect + vmstorage)   │
-└─────────────────────────┬───────────────────────────────────┘
-                          │
-              ┌───────────┴───────────┐
-              │                       │
-┌─────────────┴─────────┐  ┌─────────┴──────────────────────┐
-│ Layer 3a: Real-time   │  │ Layer 3b: Predictive Engine    │
-│ Alerting (vmalert)    │  │ (TimeGPT Service)              │
-└─────────────┬─────────┘  └─────────┬──────────────────────┘
-              │                      │
-┌─────────────┴──────────────────────┴───────────────────────┐
-│ Layer 4: AIOps Platform (Keep)                             │
-│ AI Alert Correlation + Intelligent Noise Reduction         │
-└─────────────────────────┬──────────────────────────────────┘
-                          │
-┌─────────────────────────┴───────────────────────────────────┐
-│ Layer 5: Notification Layer                                 │
-│ Multi-channel notification (WeChat, Slack, PagerDuty, etc.) │
-└─────────────────────────┬───────────────────────────────────┘
-                          │
-┌─────────────────────────┴───────────────────────────────────┐
-│ Layer 6: Visualization Layer                                │
-│ Grafana (Real-time + Predicted) + Keep UI (Alert Mgmt)      │
-└─────────────────────────────────────────────────────────────┘
-```
+![seven-layer architecture](PdM.PNG)
 
 ### 3.2 Layer 1: Data Acquisition
 
