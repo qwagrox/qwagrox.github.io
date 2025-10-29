@@ -32,6 +32,8 @@ params:
   defaultTheme: "auto" # dark, light
   disableThemeToggle: false
 
+  math: true  # 全局启用数学公式
+
   # 重要：启用自定义 CSS
   assets:
     disableFingerprinting: false
