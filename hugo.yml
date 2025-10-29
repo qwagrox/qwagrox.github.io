@@ -130,3 +130,21 @@ pygmentsUseClasses: true
 markup:
   highlight:
     noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+      autoHeadingID: true
+      autoHeadingIDType: github
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          inline:
+            - ["$", "$"]
+            - ["\\(", "\\)"]
+          block:
+            - ["$$", "$$"]
+            - ["\\[", "\\]"]

@@ -1,8 +1,8 @@
-+++
-date = '2025-10-29T23:00:30+08:00'
-title = 'AI-Driven Predictive Maintenance for Autonomous Tractors: From Reactive Repairs to Proactive Prevention'
+---
+date: '2025-10-29T23:00:30+08:00'
+title: 'AI-Driven Predictive Maintenance for Autonomous Tractors: From Reactive Repairs to Proactive Prevention'
 math: true
-+++
+---
 
 **A Deep Dive into Large-Scale Deployment of TimeGPT-Powered Predictive Maintenance Systems**
 
@@ -340,23 +340,29 @@ This is the core innovation of our system. We leverage Nixtla's TimeGPT foundati
 
 TimeGPT is a transformer-based model trained on 100+ billion time points from diverse domains (finance, energy, retail, IoT). Key characteristics:
 
-**Architecture**:
+## Architecture:
+
 - Encoder-decoder transformer with attention mechanisms
-- Input: Historical time series $\\{y_1, y_2, ..., y_T\\}$
-- Output: Future predictions $\\{\\hat{y}_{T+1}, \\hat{y}_{T+2}, ..., \\hat{y}_{T+H}\\}$
+- Input: Historical time series $y_1, y_2, \ldots, y_T$
+- Output: Future predictions $\hat{y}_{T+1}, \hat{y}_{T+2}, \ldots, \hat{y}_{T+H}$
 
-**Mathematical Formulation**:
+## Mathematical Formulation:
 
-Given historical observations $\\mathbf{y}_{1:T} = [y_1, y_2, ..., y_T]$, TimeGPT models the conditional distribution:
+Given historical observations $\mathbf{y}_{1:T} = [y_1, y_2, \ldots, y_T]$, TimeGPT models the conditional distribution:
 
-$$P(\\mathbf{y}_{T+1:T+H} | \\mathbf{y}_{1:T}, \\mathbf{X})$$
+$$
+P(\mathbf{y}_{T+1:T+H} \mid \mathbf{y}_{1:T}, \mathbf{X})
+$$
 
 where:
-- $\\mathbf{y}_{T+1:T+H}$ is the forecast horizon
-- $\\mathbf{X}$ is optional exogenous variables (e.g., vehicle speed, load)
+
+- $\mathbf{y}_{T+1:T+H}$ is the forecast horizon
+- $\mathbf{X}$ is optional exogenous variables (e.g., vehicle speed, load)
 
 The model outputs:
-1. **Point forecast**: $\\hat{y}_{T+h} = \\mathbb{E}[y_{T+h} | \\mathbf{y}_{1:T}]$
+
+1. **Point forecast**: $\hat{y}_{T+h} = \mathbb{E}[y_{T+h} \mid \mathbf{y}_{1:T}]$
+
 2. **Prediction intervals**: $[\hat{y}_{T+h}^{(\alpha)}, \hat{y}_{T+h}^{(1-\alpha)}]$ for confidence level $\alpha$
 
 **Advantages over traditional methods**:
@@ -563,11 +569,13 @@ Output:
 
 Define the anomaly score at time $t$ as:
 
-$$A_t = \\begin{cases}
-\\frac{\\hat{y}_t - \\tau}{\\sigma_t} & \\text{if } \\hat{y}_t > \\tau \\text{ (upper threshold)} \\\\
-\\frac{\\tau - \\hat{y}_t}{\\sigma_t} & \\text{if } \\hat{y}_t < \\tau \\text{ (lower threshold)} \\\\
-0 & \\text{otherwise}
-\\end{cases}$$
+$$
+A_t = \begin{cases}
+\frac{\hat{y}_t - \tau}{\sigma_t} & \text{if } \hat{y}_t > \tau \text{ (upper threshold)} \\
+\frac{\tau - \hat{y}_t}{\sigma_t} & \text{if } \hat{y}_t < \tau \text{ (lower threshold)} \\
+0 & \text{otherwise}
+\end{cases}
+$$
 
 where:
 - $\\hat{y}_t$ is the predicted value at time $t$
@@ -575,17 +583,26 @@ where:
 - $\\sigma_t$ is the prediction uncertainty (half-width of 80% confidence interval)
 
 An alert is triggered if:
-$$\\exists t \\in [T+1, T+H] : A_t > 0$$
+
+$$
+\exists t \in [T+1, T+H] : A_t > 0
+$$
 
 The time-to-violation is:
-$$t_{\\text{viol}} = \\min\\{t : A_t > 0\\}$$
+
+$$
+t_{\text{violation}} = \min_{t \in [T+1, T+H]} \{t \mid A_t > 0\}
+$$
 
 #### 3.5.5 Confidence Interval Interpretation
 
 TimeGPT provides prediction intervals at multiple confidence levels (80%, 95%). We use these to quantify uncertainty:
 
 **80% Confidence Interval**:
-$$P(y_{T+h} \\in [\\hat{y}_{T+h}^{(0.1)}, \\hat{y}_{T+h}^{(0.9)}]) = 0.8$$
+
+$$
+P\left(y_{T+h} \in \left[\hat{y}_{T+h}^{(0.1)}, \hat{y}_{T+h}^{(0.9)}\right]\right) = 0.8
+$$
 
 **Interpretation**:
 - **Narrow interval**: High confidence in prediction
@@ -688,15 +705,26 @@ Output:
 18. return incidents
 ```
 
-**Similarity Function**:
+## Similarity Function:
 
-$$\\text{sim}(a_1, a_2) = w_1 \\cdot \\text{sim}_{\\text{time}}(a_1, a_2) + w_2 \\cdot \\text{sim}_{\\text{semantic}}(a_1, a_2) + w_3 \\cdot \\text{sim}_{\\text{topo}}(a_1, a_2)$$
+The similarity between two alerts $a_1$ and $a_2$ is computed as:
 
-where:
-- $\\text{sim}_{\\text{time}}(a_1, a_2) = \\exp(-|t_1 - t_2| / \\tau)$ (temporal similarity)
-- $\\text{sim}_{\\text{semantic}}(a_1, a_2) = \\cos(\\mathbf{e}_1, \\mathbf{e}_2)$ (cosine similarity of alert embeddings)
-- $\\text{sim}_{\\text{topo}}(a_1, a_2) = \\mathbb{1}[\\text{vehicle}_1 = \\text{vehicle}_2]$ (same vehicle indicator)
-- $w_1, w_2, w_3$ are weights (default: 0.3, 0.4, 0.3)
+$$
+\text{sim}(a_1, a_2) = \sum_{i=1}^{3} w_i \cdot \text{sim}_i(a_1, a_2)
+$$
+
+where the three similarity components are:
+
+1. **Temporal similarity**: 
+   $$\text{sim}_{\text{time}}(a_1, a_2) = \exp\left(-\frac{|t_1 - t_2|}{\tau}\right)$$
+
+2. **Semantic similarity**: 
+   $$\text{sim}_{\text{semantic}}(a_1, a_2) = \cos(\mathbf{e}_1, \mathbf{e}_2)$$
+
+3. **Topological similarity**: 
+   $$\text{sim}_{\text{topo}}(a_1, a_2) = \mathbb{1}[\text{vehicle}_1 = \text{vehicle}_2]$$
+
+The weights are $w_1 = 0.3$, $w_2 = 0.4$, $w_3 = 0.3$.
 
 **Example**:
 
@@ -1303,9 +1331,20 @@ We evaluate the quality of predictive alerts:
 
 **Method**: Combine TimeGPT forecasts with degradation models:
 
-$$\\text{RUL}(t) = \\int_t^{t + \\tau} P(\\text{failure} | \\mathbf{y}_{1:t}) dt$$
+$$
+\text{RUL}(t) = \mathbb{E}[T_{\text{failure}} - t \mid \mathbf{y}_{1:t}]
+$$
 
-where $\\tau$ is the maximum lifespan.
+This expectation can be computed using the survival function:
+
+$$
+\text{RUL}(t) = \int_0^{\tau} S(t+s \mid \mathbf{y}_{1:t}) \, ds
+$$
+
+where:
+- $S(t+s \mid \mathbf{y}_{1:t})$ is the probability that the component survives until time $t+s$
+- $\tau$ is the maximum expected lifespan
+- $\mathbf{y}_{1:t}$ represents historical sensor measurements
 
 ### 7.3 Causal Analysis
 
@@ -1417,7 +1456,7 @@ We thank the Nixtla team for providing access to TimeGPT API and technical suppo
 | $H$ | Forecast horizon |
 | $\\tau$ | Threshold for anomaly detection |
 | $\\sigma_t$ | Prediction uncertainty at time $t$ |
-| $\\mathbf{X}$ | Exogenous variables |
+| $\mathbf{X}$ | Exogenous variables |
 | $\\alpha$ | Confidence level |
 | $A_t$ | Anomaly score at time $t$ |
 

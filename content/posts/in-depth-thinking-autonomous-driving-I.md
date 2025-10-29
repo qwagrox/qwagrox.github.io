@@ -1,7 +1,9 @@
-+++
-date = '2025-10-26T22:10:26+08:00'
-title = 'A note of thinking on end-to-end autonomous driving'
-+++
+---
+title: "A note of thinking on end-to-end autonomous driving"
+date: 2025-10-26T22:10:26+08:00
+math: true
+draft: false
+---
 
 ### Introduction: A Debate About the Soul of Autonomous Driving
 
