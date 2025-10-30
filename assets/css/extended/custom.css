@@ -1,6 +1,7 @@
 /* ========================================
    Tang Yong's Blog Custom Styles
-   最终版本 - 2025-10-30
+   修复版本 - 2025-10-30
+   修复：目录样式被破坏的问题
    ======================================== */
 
 /* ==========================================
@@ -14,8 +15,10 @@
     padding: 0 20px !important;
 }
 
+/* 修复：使用更精确的选择器，避免影响目录 */
 #menu,
-nav ul {
+.nav > ul,
+nav.nav > ul {
     display: flex !important;
     gap: 20px !important;
     margin-left: auto !important; /* 关键：推到右边 */
@@ -235,7 +238,7 @@ pre code {
 }
 
 /* ==========================================
-   10. 目录样式
+   10. 目录样式（修复版）
    ========================================== */
 .toc {
     background: #f9f9ff;
@@ -252,9 +255,18 @@ pre code {
     font-size: 1.1em;
 }
 
+/* 修复：确保目录列表正常显示 */
 .toc ul {
-    list-style: none;
-    padding-left: 0;
+    list-style: none !important;
+    padding-left: 0 !important;
+    display: block !important; /* 覆盖 nav ul 的 flex */
+    margin-left: 0 !important; /* 覆盖 nav ul 的 auto */
+}
+
+/* 嵌套列表缩进 */
+.toc ul ul {
+    padding-left: 1.5em !important;
+    margin-top: 0.5em;
 }
 
 .toc li {
@@ -262,6 +274,7 @@ pre code {
     padding-left: 1em;
     border-left: 2px solid #ddd;
     transition: border-color 0.2s ease;
+    display: block !important; /* 确保块级显示 */
 }
 
 .toc li:hover {
@@ -272,6 +285,7 @@ pre code {
     color: #555;
     text-decoration: none;
     transition: color 0.2s ease;
+    display: inline !important; /* 链接内联显示 */
 }
 
 .toc a:hover {
@@ -499,13 +513,15 @@ pre code {
     font-weight: 500;
     z-index: 10001;
     opacity: 0;
-    transform: translateX(400px);
-    transition: all 0.3s ease;
+    transform: translateY(-20px);
+    animation: slideDown 0.3s ease forwards;
 }
 
-.copy-notification.show {
-    opacity: 1;
-    transform: translateX(0);
+@keyframes slideDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ==========================================
@@ -513,55 +529,19 @@ pre code {
    ========================================== */
 
 @media (max-width: 768px) {
-    .share-buttons {
-        padding: 1.5em;
-        margin: 2em 0;
-    }
-
-    .share-title {
-        font-size: 1.1em;
-        margin-bottom: 1em;
-    }
-
-    .share-icons {
-        gap: 10px;
-    }
-
-    .share-button {
-        padding: 10px 15px;
-        font-size: 13px;
-    }
-
     .share-button span {
         display: none;
     }
-
-    .share-button svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    .modal-content {
-        padding: 20px;
-        max-width: 300px;
-    }
-
-    .copy-notification {
-        top: 10px;
-        right: 10px;
-        left: 10px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .share-icons {
-        justify-content: space-around;
-    }
-
+    
     .share-button {
         padding: 12px;
-        flex: 0 0 auto;
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+    }
+    
+    .share-icons {
+        gap: 10px;
     }
 }
 
@@ -570,10 +550,204 @@ pre code {
    ========================================== */
 
 @media print {
+    #reading-progress-bar,
+    #back-to-top,
     .share-buttons,
-    .modal,
-    .copy-notification {
+    .modal {
         display: none !important;
+    }
+}
+
+/* ==========================================
+   相关文章推荐样式
+   ========================================== */
+
+.related-posts {
+    margin: 3em 0;
+    padding: 2em;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.related-posts-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5em;
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.5em;
+}
+
+.related-posts-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+}
+
+.related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5em;
+    margin-top: 2em;
+}
+
+.related-post-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.related-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #667eea;
+}
+
+.related-post-link {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    padding: 1.5em;
+    height: 100%;
+}
+
+.related-post-content {
+    flex: 1;
+}
+
+.related-post-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.8em 0;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+}
+
+.related-post-card:hover .related-post-title {
+    color: #667eea;
+}
+
+.related-post-description {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 1em 0;
+}
+
+.related-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    font-size: 0.85em;
+    color: #888;
+    margin-bottom: 1em;
+}
+
+.related-post-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.related-post-meta svg {
+    flex-shrink: 0;
+}
+
+.related-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.related-post-tag {
+    font-size: 0.8em;
+    padding: 0.3em 0.8em;
+    background: #f0f0f0;
+    color: #666;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.related-post-tag-matched {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 500;
+}
+
+.related-post-arrow {
+    display: flex;
+    align-items: center;
+    color: #ccc;
+    transition: all 0.3s ease;
+    margin-left: 1em;
+}
+
+.related-post-card:hover .related-post-arrow {
+    color: #667eea;
+    transform: translateX(5px);
+}
+
+/* 响应式：移动端 */
+@media (max-width: 768px) {
+    .related-posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .related-post-link {
+        padding: 1.2em;
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .related-posts {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    .related-posts-title {
+        color: #e0e0e0;
+    }
+    
+    .related-post-card {
+        background: #0f3460;
+        border-color: #1a1a2e;
+    }
+    
+    .related-post-card:hover {
+        border-color: #667eea;
+    }
+    
+    .related-post-title {
+        color: #e0e0e0;
+    }
+    
+    .related-post-card:hover .related-post-title {
+        color: #8b9cff;
+    }
+    
+    .related-post-description {
+        color: #b0b0b0;
+    }
+    
+    .related-post-meta {
+        color: #888;
+    }
+    
+    .related-post-tag {
+        background: #1a1a2e;
+        color: #b0b0b0;
     }
 }
 
