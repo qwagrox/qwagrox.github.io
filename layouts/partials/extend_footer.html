@@ -1,0 +1,50 @@
+<!-- Reading Progress Bar -->
+<div id="reading-progress-bar"></div>
+
+<script>
+// Reading Progress Bar
+window.addEventListener('scroll', function() {
+  const progressBar = document.getElementById('reading-progress-bar');
+  if (!progressBar) return;
+  
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight - windowHeight;
+  const scrolled = window.scrollY;
+  const progress = (scrolled / documentHeight) * 100;
+  
+  progressBar.style.width = progress + '%';
+});
+
+// Smooth scroll to top
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Show/hide scroll to top button
+window.addEventListener('scroll', function() {
+  const scrollBtn = document.getElementById('scroll-to-top');
+  if (scrollBtn) {
+    if (window.scrollY > 300) {
+      scrollBtn.style.display = 'block';
+    } else {
+      scrollBtn.style.display = 'none';
+    }
+  }
+});
+</script>
+
+<!-- Scroll to Top Button -->
+<button id="scroll-to-top" onclick="scrollToTop()" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99; background-color: var(--primary); color: var(--theme); border: none; outline: none; cursor: pointer; padding: 15px; border-radius: 50%; font-size: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); transition: all 0.3s ease;">
+  ↑
+</button>
+
+<style>
+#scroll-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+</style>
+

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://qwagrox.github.io/sitemap.xml
+

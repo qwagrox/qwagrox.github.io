@@ -118,3 +118,157 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif !important;
 }
+
+
+
+/* ========== 目录导航 (Table of Contents) ========== */
+.toc {
+  background: var(--code-bg);
+  border-left: 4px solid var(--primary);
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.toc details {
+  margin: 0;
+}
+
+.toc summary {
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+  padding: 5px 0;
+  color: var(--primary);
+}
+
+.toc summary:hover {
+  opacity: 0.8;
+}
+
+.toc ul {
+  margin: 10px 0 0 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.toc ul li {
+  margin: 8px 0;
+  position: relative;
+  padding-left: 15px;
+}
+
+.toc ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-size: 12px;
+}
+
+.toc ul li a {
+  color: var(--content);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.toc ul li a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* 嵌套列表 */
+.toc ul ul {
+  margin-top: 5px;
+  padding-left: 15px;
+}
+
+/* ========== 增强的阅读体验 ========== */
+
+/* 代码块优化 */
+.post-content pre {
+  border-left: 3px solid var(--primary);
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+/* 引用块优化 */
+.post-content blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 20px;
+  margin: 20px 0;
+  font-style: italic;
+  color: var(--secondary);
+  background: var(--code-bg);
+  padding: 15px 20px;
+  border-radius: 0 5px 5px 0;
+}
+
+/* 表格优化 */
+.post-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post-content table thead {
+  background: var(--primary);
+  color: var(--theme);
+}
+
+.post-content table th,
+.post-content table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+
+.post-content table tbody tr:nth-child(even) {
+  background: var(--code-bg);
+}
+
+.post-content table tbody tr:hover {
+  background: var(--hljs-bg);
+}
+
+/* 图片优化 */
+.post-content img {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 20px 0;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 图片标题 */
+.post-content img + em {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: var(--secondary);
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+/* ========== 响应式设计 ========== */
+@media screen and (max-width: 768px) {
+  .toc {
+    padding: 15px;
+    font-size: 13px;
+  }
+  
+  .post-content table {
+    font-size: 12px;
+  }
+  
+  .post-content table th,
+  .post-content table td {
+    padding: 8px 10px;
+  }
+}
+

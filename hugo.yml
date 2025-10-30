@@ -24,10 +24,21 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: "Intelligence of agricultural robots"
-  description: "Research on autonomous intelligence of agricultural robots and automatic driving of agricultural machinery"
-  keywords: [Blog, Portfolio, autonomous intelligence, agricultural robots, automatic driving]
+  description: "Research notes on autonomous agricultural robots, computer vision, deep learning, and off-road autonomous driving by Tang Yong, PhD candidate at Jiangsu University"
+  keywords: [autonomous agricultural robots, agricultural machinery, autonomous driving, computer vision, deep learning, predictive maintenance, AI, machine learning, robotics, precision agriculture, smart farming, autonomous tractors]
   author: "Tang Yong"
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  images: ["/images/og-image.png"]  # 需要创建一个 Open Graph 图片
+  
+  # SEO 优化
+  label:
+    text: "Tang Yong's Research Blog"
+    icon: "🚜"
+    iconHeight: 35
+  
+  # Open Graph / Twitter Card 优化
+  cover:
+    linkFullImages: true
+    responsiveImages: true
   DateFormat: "January 2, 2006"
   defaultTheme: "auto" # dark, light
   disableThemeToggle: false
@@ -46,6 +57,18 @@ params:
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
+  ShowToc: true
+  TocOpen: false
+  disableScrollToTop: false
+  
+  # SEO 和分析
+  analytics:
+    google:
+      SiteVerificationTag: ""  # 添加 Google Search Console 验证码
+  
+  # 启用 Schema.org 结构化数据
+  schema:
+    publisherType: "Person"
 
   comments: true  # 启用评论
   
