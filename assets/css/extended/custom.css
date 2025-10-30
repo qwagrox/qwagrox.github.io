@@ -114,6 +114,40 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
+/* 导航栏容器 - 使用 flexbox 布局 */
+body .nav {
+    padding: 12px 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+/* Logo 区域（左侧） */
+body .logo {
+    flex-shrink: 0 !important;
+}
+
+/* 菜单区域（右侧） */
+body .menu {
+    display: flex !important;
+    gap: 20px !important;
+    align-items: center !important;
+    margin-left: auto !important;
+}
+
+/* 菜单项 */
+body .menu a {
+    padding: 8px 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+body .menu a:hover {
+    background: var(--theme) !important;
+    border-radius: 5px !important;
+}
+
+
 /* 文章正文 - 使用 Merriweather（优雅、易读） */
 .post-content, article.post-entry .entry-content {
     font-family: 'Merriweather', Georgia, serif !important;
