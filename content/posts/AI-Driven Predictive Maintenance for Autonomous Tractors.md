@@ -1487,3 +1487,5 @@ We thank the Nixtla team for providing access to TimeGPT API and technical suppo
 **Total**: 21 nodes, ~$11,000/month
 
 ---
+
+{{< share >}}
