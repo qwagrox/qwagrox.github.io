@@ -28,6 +28,8 @@ params:
   keywords: [autonomous agricultural robots, agricultural machinery, autonomous driving, computer vision, deep learning, predictive maintenance, AI, machine learning, robotics, precision agriculture, smart farming, autonomous tractors]
   author: "Tang Yong"
   images: ["/images/og-image.png"]  # 需要创建一个 Open Graph 图片
+
+  ShowCodeCopyButtons: true
   
   # SEO 优化
   label:
@@ -153,6 +155,7 @@ pygmentsUseClasses: true
 markup:
   highlight:
     noClasses: false
+    style: monokai  # 或 github, dracula, nord 等
   goldmark:
     renderer:
       unsafe: true
