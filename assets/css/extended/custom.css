@@ -121,20 +121,31 @@ body .nav {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+    width: 100% !important;
 }
+
 
 /* Logo 区域（左侧） */
 body .logo {
     flex-shrink: 0 !important;
 }
 
-/* 菜单区域（右侧） */
-body .menu {
+/* 菜单区域（右侧） - 使用更高优先级 */
+body header nav #menu {
     display: flex !important;
+    flex-direction: row !important;
     gap: 20px !important;
     align-items: center !important;
     margin-left: auto !important;
+    margin-right: 0 !important;
 }
+
+/* 菜单项 */
+body header nav #menu li {
+    display: inline-flex !important;
+    list-style: none !important;
+}
+
 
 /* 菜单项 */
 body .menu a {
