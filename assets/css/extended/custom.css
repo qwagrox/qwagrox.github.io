@@ -1,338 +1,335 @@
-/* ========== 完全模仿 Lil'Log 风格 ========== */
+/* ========================================
+   Tang Yong's Blog Custom Styles
+   最终版本 - 2025-10-30
+   ======================================== */
 
-/* 移除首页欢迎区域的最小高度限制 */
-body .first-entry {
-    min-height: auto !important;
-    margin: 0 0 20px 0 !important;
-}
+/* ==========================================
+   1. 导航菜单靠右对齐
+   ========================================== */
 
-/* 导航栏 */
-body header.header {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-body .nav {
-    padding: 12px 0 !important;
-    margin: 0 !important;
-}
-
-/* 整体布局 */
-body main.main {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-}
-
-/* 首页欢迎区域 */
-body .profile {
-    padding: 10px 0 !important;
-    margin: 0 0 15px 0 !important;
-    min-height: auto !important;
-}
-
-body .profile h1 {
-    margin: 0 0 8px 0 !important;
-    font-size: 26px !important;
-    line-height: 1.3 !important;
-}
-
-body .profile p {
-    margin: 0 0 10px 0 !important;
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    color: var(--secondary) !important;
-}
-
-/* 社交图标 */
-body .social-icons {
-    margin: 8px 0 0 0 !important;
-    padding: 0 !important;
-}
-
-/* 文章列表 */
-body article.post-entry {
-    margin: 0 0 20px 0 !important;
-    padding: 18px 22px !important;
-    border-left: 5px solid #72b95b !important;
-    background: var(--entry) !important;
-    border-radius: 5px !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
-}
-
-/* 彩色边框 */
-body article.post-entry:nth-child(4n+1) {
-    border-left-color: #72b95b !important; /* 绿色 */
-}
-
-body article.post-entry:nth-child(4n+2) {
-    border-left-color: #6b8dd6 !important; /* 蓝色 */
-}
-
-body article.post-entry:nth-child(4n+3) {
-    border-left-color: #e8b84d !important; /* 黄色 */
-}
-
-body article.post-entry:nth-child(4n+4) {
-    border-left-color: #b57bb8 !important; /* 紫色 */
-}
-
-/* 文章标题 */
-body .post-entry .entry-header h2 {
-    font-size: 19px !important;
-    margin: 0 0 8px 0 !important;
-    line-height: 1.4 !important;
-    font-weight: 600 !important;
-}
-
-/* 文章摘要 */
-body .post-entry .entry-content {
-    margin: 8px 0 !important;
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    color: var(--secondary) !important;
-}
-
-/* 文章元信息 */
-body .post-entry .entry-footer {
-    margin: 8px 0 0 0 !important;
-    font-size: 12px !important;
-    color: var(--secondary) !important;
-}
-
-/* 导入 Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap' );
-/* 导入 JetBrains Mono 字体 */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap' );
-
-/* 代码字体优化 */
-code, kbd, pre, samp {
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace !important;
-}
-
-/* 全局字体 - 使用 Inter（现代、清晰） */
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-}
-
-/* 导航栏容器 - 使用 flexbox 布局 */
-body .nav {
-    padding: 12px 0 !important;
-    margin: 0 !important;
+.nav {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    width: 100% !important;
+    padding: 0 20px !important;
 }
 
-
-/* Logo 区域（左侧） */
-body .logo {
-    flex-shrink: 0 !important;
-}
-
-/* 菜单区域（右侧） - 使用更高优先级 */
-body header nav #menu {
+#menu,
+nav ul {
     display: flex !important;
-    flex-direction: row !important;
     gap: 20px !important;
-    align-items: center !important;
-    margin-left: auto !important;
-    margin-right: 0 !important;
-}
-
-/* 菜单项 */
-body header nav #menu li {
-    display: inline-flex !important;
+    margin-left: auto !important; /* 关键：推到右边 */
     list-style: none !important;
 }
 
-
-/* 菜单项 */
-body .menu a {
-    padding: 8px 12px !important;
-    transition: all 0.2s ease !important;
+.logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
 }
 
-body .menu a:hover {
-    background: var(--theme) !important;
-    border-radius: 5px !important;
+/* ==========================================
+   2. 阅读进度条
+   ========================================== */
+#reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
 }
 
-
-/* 文章正文 - 使用 Merriweather（优雅、易读） */
-.post-content, article.post-entry .entry-content {
-    font-family: 'Merriweather', Georgia, serif !important;
-    font-size: 16px !important;
-    line-height: 1.8 !important;
+/* ==========================================
+   3. 返回顶部按钮
+   ========================================== */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
-/* 标题保持无衬线字体 */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif !important;
+#back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+#back-to-top.show {
+    display: flex;
+}
+
+/* ==========================================
+   4. 代码字体优化
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+code,
+pre,
+.hljs,
+.code-block,
+kbd,
+samp,
+tt,
+var {
+    font-family: 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-variant-ligatures: common-ligatures;
+    font-feature-settings: "liga" 1, "calt" 1;
 }
 
 pre code {
-    counter-reset: line;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
 }
 
-pre code > span::before {
-    counter-increment: line;
-    content: counter(line);
-    display: inline-block;
-    width: 3em;
-    padding-right: 1em;
-    color: #666;
+/* ==========================================
+   5. 表格样式
+   ========================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.95em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
+table thead tr {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    text-align: left;
+    font-weight: 600;
+}
 
-/* ========== 目录导航 (Table of Contents) ========== */
+table th,
+table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    transition: background-color 0.2s ease;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+table tbody tr:hover {
+    background-color: #e8e8ff;
+    cursor: pointer;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #764ba2;
+}
+
+/* ==========================================
+   6. 引用块样式
+   ========================================== */
+blockquote {
+    border-left: 4px solid #764ba2;
+    padding: 1em 1.5em;
+    margin: 1.5em 0;
+    background: linear-gradient(to right, #f9f9ff 0%, #ffffff 100%);
+    font-style: italic;
+    color: #555;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+blockquote p {
+    margin: 0;
+}
+
+/* ==========================================
+   7. 图片样式
+   ========================================== */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2em auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-content img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================
+   8. 代码块样式
+   ========================================== */
+pre {
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 16px;
+    overflow-x: auto;
+    margin: 1.5em 0;
+    line-height: 1.6;
+}
+
+code {
+    background: #f6f8fa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e83e8c;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: 14px;
+}
+
+/* ==========================================
+   9. 文章卡片边框
+   ========================================== */
+.post-entry {
+    border-left: 4px solid transparent;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.post-entry:nth-child(4n+1) {
+    border-left-color: #ff6b6b;
+}
+
+.post-entry:nth-child(4n+2) {
+    border-left-color: #4ecdc4;
+}
+
+.post-entry:nth-child(4n+3) {
+    border-left-color: #45b7d1;
+}
+
+.post-entry:nth-child(4n+4) {
+    border-left-color: #f9ca24;
+}
+
+.post-entry:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================
+   10. 目录样式
+   ========================================== */
 .toc {
-  background: var(--code-bg);
-  border-left: 4px solid var(--primary);
-  padding: 20px;
-  margin: 30px 0;
-  border-radius: 5px;
-  font-size: 14px;
-  line-height: 1.8;
+    background: #f9f9ff;
+    border: 1px solid #e0e0ff;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin: 2em 0;
 }
 
-.toc details {
-  margin: 0;
-}
-
-.toc summary {
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  user-select: none;
-  padding: 5px 0;
-  color: var(--primary);
-}
-
-.toc summary:hover {
-  opacity: 0.8;
+.toc-title {
+    font-weight: 600;
+    color: #764ba2;
+    margin-bottom: 1em;
+    font-size: 1.1em;
 }
 
 .toc ul {
-  margin: 10px 0 0 0;
-  padding-left: 20px;
-  list-style: none;
+    list-style: none;
+    padding-left: 0;
 }
 
-.toc ul li {
-  margin: 8px 0;
-  position: relative;
-  padding-left: 15px;
+.toc li {
+    margin: 0.5em 0;
+    padding-left: 1em;
+    border-left: 2px solid #ddd;
+    transition: border-color 0.2s ease;
 }
 
-.toc ul li::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--primary);
-  font-size: 12px;
+.toc li:hover {
+    border-left-color: #764ba2;
 }
 
-.toc ul li a {
-  color: var(--content);
-  text-decoration: none;
-  transition: color 0.2s ease;
+.toc a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-.toc ul li a:hover {
-  color: var(--primary);
-  text-decoration: underline;
+.toc a:hover {
+    color: #764ba2;
+    text-decoration: underline;
 }
 
-/* 嵌套列表 */
-.toc ul ul {
-  margin-top: 5px;
-  padding-left: 15px;
+/* ==========================================
+   11. 响应式设计
+   ========================================== */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    #menu,
+    nav ul {
+        margin-left: 0 !important;
+        justify-content: center;
+    }
+
+    #back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    table {
+        font-size: 0.85em;
+    }
+
+    table th,
+    table td {
+        padding: 8px 10px;
+    }
 }
 
-/* ========== 增强的阅读体验 ========== */
+/* ==========================================
+   12. 打印样式
+   ========================================== */
+@media print {
+    #reading-progress-bar,
+    #back-to-top,
+    .nav {
+        display: none !important;
+    }
 
-/* 代码块优化 */
-.post-content pre {
-  border-left: 3px solid var(--primary);
-  border-radius: 5px;
-  margin: 20px 0;
-}
+    .post-content img {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
 
-/* 引用块优化 */
-.post-content blockquote {
-  border-left: 4px solid var(--primary);
-  padding-left: 20px;
-  margin: 20px 0;
-  font-style: italic;
-  color: var(--secondary);
-  background: var(--code-bg);
-  padding: 15px 20px;
-  border-radius: 0 5px 5px 0;
-}
-
-/* 表格优化 */
-.post-content table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 20px 0;
-  font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.post-content table thead {
-  background: var(--primary);
-  color: var(--theme);
-}
-
-.post-content table th,
-.post-content table td {
-  padding: 12px 15px;
-  text-align: left;
-  border: 1px solid var(--border);
-}
-
-.post-content table tbody tr:nth-child(even) {
-  background: var(--code-bg);
-}
-
-.post-content table tbody tr:hover {
-  background: var(--hljs-bg);
-}
-
-/* 图片优化 */
-.post-content img {
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin: 20px 0;
-  max-width: 100%;
-  height: auto;
-}
-
-/* 图片标题 */
-.post-content img + em {
-  display: block;
-  text-align: center;
-  font-size: 14px;
-  color: var(--secondary);
-  margin-top: -10px;
-  margin-bottom: 20px;
-}
-
-/* ========== 响应式设计 ========== */
-@media screen and (max-width: 768px) {
-  .toc {
-    padding: 15px;
-    font-size: 13px;
-  }
-  
-  .post-content table {
-    font-size: 12px;
-  }
-  
-  .post-content table th,
-  .post-content table td {
-    padding: 8px 10px;
-  }
+    table {
+        page-break-inside: avoid;
+    }
 }
 
